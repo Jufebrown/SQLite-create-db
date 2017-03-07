@@ -37,7 +37,11 @@ const populateEmployees = () => {
 
 db.all(`SELECT * FROM employees`, (err, allRows) => {
   // console.log('row', row)
-  allRows.forEach((each) => {
-    console.log(each)
+  allRows.forEach(({id, first, last, department, salary}) => {
+    console.log(`
+      ${id} ${first} ${last}
+      from ${department} Department.
+      Salary: ${salary}
+    `)
   })
 })
