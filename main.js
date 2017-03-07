@@ -35,6 +35,9 @@ const populateEmployees = () => {
 //   console.log('row', row)
 // })
 
-db.all(`SELECT * FROM employees`, (err, row) => {
-  console.log('row', row)
+db.all(`SELECT * FROM employees`, (err, allRows) => {
+  // console.log('row', row)
+  allRows.forEach((each) => {
+    console.log(each)
+  })
 })
