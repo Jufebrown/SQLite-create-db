@@ -11,6 +11,14 @@ const dropEmployees = () => {
 
 // dropEmployees()
 
-db.run('CREATE TABLE IF NOT EXISTS employees (id INT, first TEXT, last TEXT, salary NUMBER(6, 2))')
+db.run('CREATE TABLE IF NOT EXISTS employees (id INT, first TEXT, last TEXT, salary DECIMAL(6, 2))')
 
-// db.run(`INSERT INTO employees VALUES (1, "Ashley", "Irwin", 5.00)`)
+// db.run(`INSERT INTO employees VALUES (1, "Jufe", "Brown-Tsai", 125000.86)`)
+
+
+const populateEmployees = () => {
+  const {list} = require('./employees.json')
+  console.log(list)
+}
+
+populateEmployees()
