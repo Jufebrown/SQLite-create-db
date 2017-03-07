@@ -31,6 +31,10 @@ const populateEmployees = () => {
 
 // populateEmployees()
 
-db.get(`SELECT * FROM employees`, (err, row) => {
+// db.get(`SELECT * FROM employees`, (err, row) => {
+//   console.log('row', row)
+// })
+
+db.all(`SELECT * FROM employees`, (err, row) => {
   console.log('row', row)
 })
