@@ -37,9 +37,9 @@ const populateEmployees = () => {
 //   console.log('row', row)
 // })
 
-const over50k = (value) => {
-  return value.salary > 50000
-}
+// const over50k = (value) => {
+//   return value.salary > 50000
+// }
 
 //.all returns array of results
 db.all(`SELECT first, last, salary FROM employees GROUP BY first`, (err, allRows) => {
@@ -52,7 +52,9 @@ db.all(`SELECT first, last, salary FROM employees GROUP BY first`, (err, allRows
   //     Salary: ${salary}
   //   `)
   // })
-  console.log(allRows.filter(over50k))
+  let result = allRows.filter(each => each.salary > 50000)
+
+  console.log(result)
 
 })
 
