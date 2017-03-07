@@ -31,17 +31,31 @@ const populateEmployees = () => {
 
 // populateEmployees()
 
+
+//.get returns first row
 // db.get(`SELECT * FROM employees`, (err, row) => {
 //   console.log('row', row)
 // })
 
-db.all(`SELECT * FROM employees`, (err, allRows) => {
-  // console.log('row', row)
-  allRows.forEach(({id, first, last, department, salary}) => {
-    console.log(`
-      ${id} ${first} ${last}
-      from ${department} Department.
-      Salary: ${salary}
-    `)
-  })
+
+//.all returns array of results
+// db.all(`SELECT * FROM employees`, (err, allRows) => {
+//   // console.log('row', row)
+//   allRows.forEach(({id, first, last, department, salary}) => {
+//     console.log(`
+//       ${id} ${first} ${last}
+//       from ${department} Department.
+//       Salary: ${salary}
+//     `)
+//   })
+// })
+
+
+//.each returns each row (array of table)
+db.each(`SELECT * FROM employees`, (err, {id, first, last, department, salary}) => {
+  console.log(`
+    ${id} ${first} ${last}
+    from ${department} Department.
+    Salary: ${salary}
+  `)
 })
