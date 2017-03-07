@@ -37,25 +37,31 @@ const populateEmployees = () => {
 //   console.log('row', row)
 // })
 
+const over50k = (value) => {
+  return value.salary > 50000
+}
 
 //.all returns array of results
-// db.all(`SELECT * FROM employees`, (err, allRows) => {
-//   // console.log('row', row)
-//   allRows.forEach(({id, first, last, department, salary}) => {
-//     console.log(`
-//       ${id} ${first} ${last}
-//       from ${department} Department.
-//       Salary: ${salary}
-//     `)
-//   })
-// })
+db.all(`SELECT first, last, salary FROM employees GROUP BY first`, (err, allRows) => {
+  // console.log('row', row)
+
+  // allRows.forEach(({id, first, last, department, salary}) => {
+  //   console.log(`
+  //     ${id} ${first} ${last}
+  //     from ${department} Department.
+  //     Salary: ${salary}
+  //   `)
+  // })
+  console.log(allRows.filter(over50k))
+
+})
 
 
 //.each returns each row (array of table)
-db.each(`SELECT * FROM employees`, (err, {id, first, last, department, salary}) => {
-  console.log(`
-    ${id} ${first} ${last}
-    from ${department} Department.
-    Salary: ${salary}
-  `)
-})
+// db.each(`SELECT * FROM employees`, (err, {id, first, last, department, salary}) => {
+//   console.log(`
+//     ${id} ${first} ${last}
+//     from ${department} Department.
+//     Salary: ${salary}
+//   `)
+// })
