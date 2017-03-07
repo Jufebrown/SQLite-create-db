@@ -18,7 +18,14 @@ db.run('CREATE TABLE IF NOT EXISTS employees (id INT, first TEXT, last TEXT, sal
 
 const populateEmployees = () => {
   const {list} = require('./employees.json')
-  console.log(list)
+  list.forEach(each => {
+    db.run(`INSERT INTO employees VALUES (
+      ${each.id},
+      "${each.firstName}",
+      "${each.lastName}",
+      ${each.salary}
+    )`)
+  })
 }
 
 populateEmployees()
